@@ -4,8 +4,8 @@ import (
 	"log"
 	"regexp"
 	"strconv"
-	"zhenaiSpider/simpleSoider/engine"
-	"zhenaiSpider/simpleSoider/model"
+	"zhenaiSpider/simpleSpider/engine"
+	"zhenaiSpider/simpleSpider/model"
 )
 
 var (

@@ -2,7 +2,7 @@ package zhenai
 
 import (
 	"regexp"
-	"zhenaiSpider/simpleSoider/engine"
+	"zhenaiSpider/simpleSpider/engine"
 )
 
 const cityRe = `<a href="(http://album.zhenai.com/u/[\d]+)"[^>]*>([^</]+)</a>`

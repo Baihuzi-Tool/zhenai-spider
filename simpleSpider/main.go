@@ -1,8 +1,8 @@
 package main
 
 import (
-	"zhenaiSpider/simpleSoider/engine"
-	"zhenaiSpider/simpleSoider/parser/zhenai"
+	"zhenaiSpider/simpleSpider/engine"
+	"zhenaiSpider/simpleSpider/parser/zhenai"
 )
 
 func main() {
