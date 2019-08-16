@@ -8,7 +8,7 @@ import (
 func main() {
 	testRequest := engine.Request{
 		Url:        "http://www.zhenai.com/zhenghun/",
-		ParserFunc: zhenai.ParseCityList,
+		ParserFunc: zhenai.ParserCityList,
 	}
 
 	engine.Run(testRequest)
