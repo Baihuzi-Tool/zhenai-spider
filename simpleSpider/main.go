@@ -5,8 +5,10 @@ import (
 	"fmt"
 	"golang.org/x/net/html/charset"
 	"golang.org/x/text/encoding"
-	"io"
+	"golang.org/x/text/encoding/unicode"
+	"golang.org/x/text/transform"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"regexp"
 )
@@ -21,18 +23,21 @@ func main() {
 	if resp.StatusCode != http.StatusOK {
 		fmt.Println("status code is ", resp.StatusCode)
 	}
-	//e := determineEncoding(resp.Body)
-	//reader := transform.NewReader(resp.Body, e.NewDecoder())
-	all, err := ioutil.ReadAll(resp.Body)
+	bodyReader := bufio.NewReader(resp.Body)
+	e := determineEncoding(bodyReader)
+	reader := transform.NewReader(bodyReader, e.NewDecoder())
+	all, err := ioutil.ReadAll(reader)
+	fmt.Printf("%s\n", all)
 	if err != nil {
 		panic(err)
 	}
 	printCityAndUrl(all)
 }
-func determineEncoding(r io.Reader) encoding.Encoding {
-	bytes, err := bufio.NewReader(r).Peek(1024)
+func determineEncoding(r *bufio.Reader) encoding.Encoding {
+	bytes, err := r.Peek(1024)
 	if err != nil {
-		panic(err)
+		log.Printf("fetcher error: %v", err)
+		return unicode.UTF8
 	}
 	e, _, _ := charset.DetermineEncoding(bytes, "")
 
