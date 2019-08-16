@@ -2,7 +2,7 @@ package engine
 
 import (
 	"log"
-	"zhenaiSpider/simpleSpider/fetcher"
+	"zhenaiSpider/concurrentSpider/fetcher"
 )
 
 func Run(seed ...Request) {

@@ -4,8 +4,8 @@ import (
 	"log"
 	"regexp"
 	"strconv"
-	"zhenaiSpider/simpleSpider/engine"
-	"zhenaiSpider/simpleSpider/model"
+	"zhenaiSpider/concurrentSpider/engine"
+	"zhenaiSpider/concurrentSpider/model"
 )
 
 var (

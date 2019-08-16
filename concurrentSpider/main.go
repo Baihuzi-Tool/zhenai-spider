@@ -1,15 +1,15 @@
 package main
 
 import (
-	"zhenaiSpider/simpleSpider/engine"
-	"zhenaiSpider/simpleSpider/parser/zhenai"
+	"zhenaiSpider/concurrentSpider/engine"
+	"zhenaiSpider/concurrentSpider/parser/zhenai"
 )
 
 func main() {
-	testRequest := engine.Request{
+	request := engine.Request{
 		Url:        "http://www.zhenai.com/zhenghun/",
 		ParserFunc: zhenai.ParserCityList,
 	}
 
-	engine.Run(testRequest)
+	engine.Run(request)
 }
