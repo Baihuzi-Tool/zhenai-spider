@@ -21,7 +21,7 @@ var (
 	houseRe     = regexp.MustCompile(`<div class="m-btn pink"[^>]*>([已|未]购房)</div>`)
 	useCityRe   = regexp.MustCompile(`<div class="des f-cl"[^>]*>([^ ]+) [^<]*</div>`)
 	idRe        = regexp.MustCompile(`http://album.zhenai.com/u/([0-9]+)`)
-	photoRe     = regexp.MustCompile(`background-image:url\(([^?]+)?`)
+	photoRe     = regexp.MustCompile(`background-image:url\((https://photo.zastatic.com/images/photo[^?]+)?`)
 	nameRe      = regexp.MustCompile(`<h1 class="nickName"[^>]*>([^<]+)</h1>`)
 )
 
