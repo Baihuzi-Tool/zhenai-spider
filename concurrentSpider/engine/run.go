@@ -37,7 +37,6 @@ func (e *ConcurrentEngine) Run(seed ...Request) {
 		for _, r := range result.Requests {
 			e.Scheduler.Submit(r)
 		}
-
 	}
 
 }
@@ -52,7 +51,6 @@ func createWorker(in chan Request, out chan ParserResult) {
 			}
 			out <- result
 		}
-
 	}()
 }
 
