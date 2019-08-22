@@ -25,6 +25,9 @@ func (e *ConcurrentEngine) Run(seed ...Request) {
 	}
 
 	for _, r := range seed {
+		if isDuplication(r.Url) {
+			continue
+		}
 		e.Scheduler.Submit(r)
 	}
 	itemCount := 0
@@ -35,10 +38,24 @@ func (e *ConcurrentEngine) Run(seed ...Request) {
 		}
 		itemCount++
 		for _, r := range result.Requests {
+			if isDuplication(r.Url) {
+				continue
+			}
 			e.Scheduler.Submit(r)
 		}
 	}
 
+}
+
+var parsedUrl = make(map[string]bool)
+
+func isDuplication(url string) bool {
+	if exist, ok := parsedUrl[url]; ok && exist {
+		return true
+	}
+
+	parsedUrl[url] = true
+	return false
 }
 
 func createWorker(in chan Request, out chan ParserResult) {
